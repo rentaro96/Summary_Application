@@ -10,9 +10,14 @@ import SwiftUI
 struct Help: View {
     var body: some View {
         VStack {
+            Text("SmartSummaryの使い方")
+                .font(.title)
+                .multilineTextAlignment(.leading)
             
                
         }
+       
+            
     }
 }
 
