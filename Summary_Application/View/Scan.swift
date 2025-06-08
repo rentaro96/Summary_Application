@@ -56,9 +56,18 @@ struct Scan: View {
                 .tabViewStyle(.page)
                 .frame(maxHeight: .infinity)
 
-                Button("解析を開始") {
-                    // ここに解析ロジック
-                }
+                Button("解析を開始") { vm.analyze() }
+                    .disabled(vm.pages.isEmpty || vm.isBusy)
+                    .buttonStyle(.borderedProminent)
+                    .overlay {
+                        if vm.isBusy { ProgressView().progressViewStyle(.circular) }
+                    }
+                    .onChange(of: vm.summary) { _ in
+                        if !vm.summary.isEmpty { showResult = true }
+                    }
+                    .sheet(isPresented: $showResult) {
+                        ResultView(vm: vm)
+                    }
             }
             .padding(.bottom, 8)                      // ページドットとツールバーの間隔を少し確保
         }
