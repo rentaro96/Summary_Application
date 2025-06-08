@@ -15,16 +15,17 @@ struct Menubar: View {
                     Image(systemName:"clock.fill")
                     Text("履歴")
                 }
-            Help()
-                .tabItem{
-                    Image(systemName: "questionmark")
-                    Text("使い方")
-                }
             Scan()
                 .tabItem{
                     Image(systemName: "camera.fill")
                     Text("カメラ")
                 }
+            Help()
+                .tabItem{
+                    Image(systemName: "questionmark")
+                    Text("使い方")
+                }
+            
         }
     }
 }
